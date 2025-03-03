@@ -1,0 +1,53 @@
+cargo-features = ["per-package-target", "edition2024"]
+
+[package]
+name = "sunzip"
+version = "0.0.1"
+edition = "2024"
+autoexamples = false
+autobenches = false
+description = "7Z Compact/Extract Tool"
+documentation = "https://docs.rs/sunzip"
+readme = "README.md"
+homepage = "https://github.com/gabrielfalcao/sunzip"
+license = "MIT"
+
+[package.metadata]
+cargo-args = ["-Zmtime-on-use", "-Zavoid-dev-deps", "-Zcustom_mir"]
+
+[lib]
+name = "sunzip"
+path = "sunzip/lib.rs"
+
+doctest = false
+bench = false
+
+[[bin]]
+name = "sunzip"
+path = "sunzip.rs"
+doctest = false
+bench = false
+doc = false
+
+[[bin]]
+name = "s7unzip"
+path = "sunzip.rs"
+doctest = false
+bench = false
+doc = false
+
+[[bin]]
+name = "s7zip"
+path = "s7zip.rs"
+doctest = false
+bench = false
+doc = false
+
+[dependencies]
+clap = { version = "4.5.29", features = ["derive", "env", "string", "unicode", "wrap_help"] }
+serde = { version = "1.0.217", features = ["derive"] }
+sevenz-rust = "0.6.1"
+iocore = { version = "0.1000.0"}
+crc = "3.2.1"
+hex = "0.4.3"
+liblzma = "0.3.6"
